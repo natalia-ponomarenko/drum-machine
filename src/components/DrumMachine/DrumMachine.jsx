@@ -4,12 +4,12 @@ import { DrumPadGroup } from "../DrumPadGroup/DrumPadGroup";
 import "./DrumMachine.scss"
 
 export function DrumMachine() {
-  const [padName, setPadName] = useState('');
+  const [soundName, setSoundName] = useState('');
 
   return (
     <div id="drum-machine">
-      <DrumPadGroup />
-      <Display />
+      <DrumPadGroup setSoundName={setSoundName} />
+      <Display soundName={soundName} />
     </div>
     );
 }

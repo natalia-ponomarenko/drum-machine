@@ -1,33 +1,22 @@
 import { audioClips } from "../../variables";
 import { DrumPad } from "../DrumPad/DrumPad";
-import React, { useRef } from 'react';
 import "./DrumPadGroup.scss";
+import $ from "jquery";
 
-export function DrumPadGroup() {
-  const myRef = useRef(null);
-
-  function triggerTheSoundEffect(letter) {
-    const audio = document.getElementById(letter);
-    audio.play();
+export function DrumPadGroup({ setSoundName }) {
+  function triggerTheSoundEffect(letter, soundName) {
+    $("#" + letter)
+      .get(0)
+      .play();
+    setSoundName(soundName);
   }
 
-  function handleKeyPress(event) {
-    if (
-      event.key === "q" ||
-      event.key === "w" ||
-      event.key === "e" ||
-      event.key === "a" ||
-      event.key === "s" ||
-      event.key === "d" ||
-      event.key === "z" ||
-      event.key === "x" ||
-      event.key === "c"
-    ) {
-     const audio = myRef.current.play();
-      audio.play();
-      console.log("key pressed");
-    }
-  }
+  $(document).on("keypress", (event) => {
+    const audio = $("#" + event.key.toUpperCase());
+    const parentID = audio.parent().attr('id');
+    audio.get(0).play();
+    setSoundName(parentID);
+  });
 
   return (
     <div className="drum-group">
@@ -37,8 +26,6 @@ export function DrumPadGroup() {
             key={audio.id}
             audio={audio}
             triggerHandler={triggerTheSoundEffect}
-            pressHandler={handleKeyPress}
-            thisref={myRef}
           />
         );
       })}

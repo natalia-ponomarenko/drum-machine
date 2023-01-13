@@ -1,5 +1,7 @@
-export function Display() {
+import './Display.scss';
+
+export function Display({ soundName }) {
   return (
-    <div id="display"></div>
+    <div id="display">{soundName}</div>
     );
 }

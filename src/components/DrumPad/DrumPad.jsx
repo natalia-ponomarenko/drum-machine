@@ -1,15 +1,12 @@
-import "./DrumPad.scss"
+import "./DrumPad.scss";
 
-export function DrumPad({ audio, triggerHandler, thisref, handleKeyPress }) {
+export function DrumPad({ audio, triggerHandler }) {
   return (
     <div
       className="drum-pad"
-      onClick={() => triggerHandler(audio.id)}
+      onClick={() => triggerHandler(audio.id, audio.parentId)}
       key={audio.id}
       id={audio.parentId}
-      tabIndex={0}
-      ref={thisref}
-      onKeyDown={handleKeyPress}
     >
       <audio id={audio.id} className="clip" src={audio.soundPath}></audio>
       {audio.id}
