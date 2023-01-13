@@ -1,4 +1,5 @@
 import { DrumMachine } from './components/DrumMachine/DrumMachine';
+import './styles.scss'
 
 function App() {
   return (
