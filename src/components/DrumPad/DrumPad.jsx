@@ -8,9 +8,9 @@ export function DrumPad({ audio, setSoundName }) {
       $("#" + key)
         .get(0)
         .play();
-      setSoundName(audio.parentId);
+      setSoundName(audio.text);
     },
-    [audio.parentId, setSoundName]
+    [audio.text, setSoundName]
   );
 
   useEffect(() => {

@@ -1,16 +1,14 @@
 .volume {
   &__wrapper {
-    height: 75px;
+    height: 55px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
   }
 }
 
 input[type="range"] {
   -webkit-appearance: none;
   background: transparent;
+  width: 100%;
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;

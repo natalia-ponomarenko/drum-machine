@@ -1,9 +1,11 @@
 # drum-machine
 
 # Description
-- Click the buttons to play sounds(appropriate keyboard buttons are also available)
+- Click the buttons to play sounds(keyboard keys are also available)
 - Sound names are displayed in the display field
-- 
+- Volume range can be changed and displayed
+- Sound can be muted
+- Two sets of sounds are available
 
 # Links
 - [DEMO LINK](https://natalia-ponomarenko.github.io/drum-machine/)
