@@ -1,4 +1,4 @@
-import './Button.scss';
+import "./Button.scss";
 
 export function Button({ actionHandler, children }) {
   return (

@@ -4,7 +4,7 @@ export function Background({ children }) {
   return (
     <div className="background background__container">
       <img
-        src="../../images/galaxy.png"
+        // src="../../images/galaxy.png"
         alt="galaxy"
         className="background__image"
       />

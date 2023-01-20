@@ -6,7 +6,6 @@ import "./DrumMachine.scss";
 import { audioClips } from "../../variables";
 import { audioClips2 } from "../../variables";
 import { Button } from "../Button/Button";
-import $ from 'jquery';
 
 export const SoundNameContext = React.createContext();
 
@@ -16,7 +15,7 @@ export function DrumMachine() {
   const [soundSet, setSoundSet] = useState(audioClips);
 
   function updateTheDisplay(text) {
-    setSoundName(text)
+    setSoundName(text);
   }
 
   const handleVolumeChange = (e) => {
@@ -27,6 +26,9 @@ export function DrumMachine() {
     soundSet === audioClips
       ? setSoundSet(audioClips2)
       : setSoundSet(audioClips);
+    updateTheDisplay(
+      soundSet === audioClips ? "Second sound set" : "First sound set"
+    );
   };
 
   const muteTheSound = () => {
@@ -35,7 +37,7 @@ export function DrumMachine() {
 
   useEffect(() => {
     const setKeyToVolume = () => {
-      const audios = soundSet.map((audio) => $("#audio.id"));
+      const audios = soundSet.map((audio) => document.getElementById(audio.id));
       audios.forEach((audio) => {
         if (audio) {
           audio.volume = volume;
@@ -45,7 +47,7 @@ export function DrumMachine() {
     };
 
     setKeyToVolume();
-  }, [soundSet, volume]);
+  }, [volume]);
 
   return (
     <SoundNameContext.Provider value={soundName}>

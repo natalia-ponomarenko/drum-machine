@@ -4,29 +4,40 @@ import $ from "jquery";
 
 export function DrumPad({ audio, setSoundName }) {
   const playAudio = useCallback(
-    (key) => {
-      $("#" + key)
-        .get(0)
-        .play();
-      setSoundName(audio.text);
+    (key, text) => {
+      const audio = $("#" + key)[0];
+      styleActiveKey(audio);
+      audio.play();
+      setSoundName(text);
+      unstyleActiveKey(audio);
     },
-    [audio.text, setSoundName]
+    [setSoundName]
   );
 
   useEffect(() => {
     const keyEvent = ({ key }) =>
-      key.toUpperCase() === audio.id && playAudio(audio.id);
+      key.toUpperCase() === audio.id && playAudio(audio.id, audio.text);
     $(document).on("keypress", keyEvent);
 
     return () => {
       $(document).off("keypress", keyEvent);
     };
-  }, [audio.id, playAudio]);
+  }, [audio.id, audio.text, playAudio]);
+
+  const styleActiveKey = (audio) => {
+    audio.parentElement.classList.add("active");
+  };
+
+  const unstyleActiveKey = (audio) => {
+    setTimeout(() => {
+      audio.parentElement.classList.remove("active");
+    }, 200);
+  };
 
   return (
     <div
       className="drum-pad"
-      onClick={() => playAudio(audio.id)}
+      onClick={() => playAudio(audio.id, audio.text)}
       key={audio.id}
       id={audio.parentId}
     >
